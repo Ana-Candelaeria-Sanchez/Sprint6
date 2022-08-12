@@ -55,17 +55,13 @@ INSERT INTO marca_tarjeta ( marca_tarjeta_nombre) VALUES
 
 SELECT * FROM marca_tarjeta
 
-DROP TABLE IF EXISTS `tarjeta`;
-
-DROP TABLE IF EXISTS 'tarjeta';
-
 CREATE TABLE tarjeta(
 	'tarjeta_id' INTEGER NOT NULL,
 	'numero_tarjeta' VARCHAR(20),
 	'tarjeta_CVV' varchar(3),
 	'tarjeta_fecha_de_otorgamiento' TEXT NOT NULL,
 	'tarjeta_fecha_de_expiracion' TEXT NOT NULL,
-    tipo_cliente_id INTEGER,
+  customer_id INTEGER,
    tipo_tarjeta_id INTEGER,
    marca_tarjeta_id INTEGER,
 	PRIMARY KEY ('tarjeta_id')
@@ -73,8 +69,8 @@ CREATE TABLE tarjeta(
 	REFERENCES marca_tarjeta ( marca_tarjeta_id),
 	FOREIGN KEY (  tipo_tarjeta_id)
 	REFERENCES tipo_tarjeta ( tipo_tarjeta_id),
-	FOREIGN KEY (tipo_cliente_id)
-	REFERENCES tipo_cliente (tipo_cliente_id)
+	FOREIGN KEY (customer_id)
+	REFERENCES cliente(customer_id)
 ) ;
 
 INSERT INTO 'tarjeta' ('numero_tarjeta','tarjeta_CVV','tarjeta_fecha_de_otorgamiento','tarjeta_fecha_de_expiracion')
@@ -646,4 +642,5 @@ VALUES
   ("555488 5735375457","933","2021-02-11","2022-18-06"),
   ("546 29983 68432 460","609","2021-35-22","2022-14-08"),
   ("5165275942452243","299","2022-18-20","2021-13-01");
-
+  
+  SELECT * FROM tarjeta
